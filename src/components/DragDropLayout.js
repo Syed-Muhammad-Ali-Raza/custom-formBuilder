@@ -61,6 +61,7 @@ function DragDropLayout() {
 
   const saveLayout = () => {
     localStorage.setItem('dragDropLayout', JSON.stringify(rows));
+    console.log(rows);
     alert('Layout saved successfully!');
   };
 
