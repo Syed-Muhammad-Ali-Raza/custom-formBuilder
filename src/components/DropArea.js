@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './DropArea.module.css';
 
 const DropArea = ({ rows, onDragOver, onDropColumn, onFieldDrop, onFieldUpdate }) => {
   const handleInputChange = (e, rowIndex, columnIndex, fieldIndex, key) => {
@@ -21,55 +22,29 @@ const DropArea = ({ rows, onDragOver, onDropColumn, onFieldDrop, onFieldUpdate }
 
   return (
     <div
+      className={styles['drop-area']}
       onDragOver={onDragOver}
       onDrop={onDropColumn}
-      style={{
-        flex: 1,
-        minHeight: '400px',
-        border: '2px dashed #ccc',
-        padding: '20px',
-        borderRadius: '5px',
-        backgroundColor: '#f9f9f9',
-      }}
     >
       <h2>Drop Area</h2>
       {rows.map((row, rowIndex) => (
         <div
           key={rowIndex}
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            marginBottom: '20px',
-            padding: '10px',
-            backgroundColor: '#eaeaea',
-            borderRadius: '5px',
-          }}
+          className={styles['row']}
         >
           {row.columns.map((column, columnIndex) => (
             <div
               key={columnIndex}
+              className={styles['column']}
               onDragOver={onDragOver}
               onDrop={(e) => onFieldDrop(e, rowIndex, columnIndex)}
-              style={{
-                flex: 1,
-                minHeight: '100px',
-                margin: '0 10px',
-                border: '1px dashed #000',
-                padding: '10px',
-                backgroundColor: '#fff',
-              }}
             >
               {column.fields.map((field, fieldIndex) => (
                 <div
                   key={fieldIndex}
-                  style={{
-                    margin: '10px 0',
-                    padding: '10px',
-                    backgroundColor: 'lightblue',
-                    borderRadius: '5px',
-                  }}
+                  className={styles['field']}
                 >
-                  <div>
+                  <div className={styles['field-label']}>
                     <label>Label:</label>
                     <input
                       type="text"
@@ -79,7 +54,7 @@ const DropArea = ({ rows, onDragOver, onDropColumn, onFieldDrop, onFieldUpdate }
                       }
                     />
                   </div>
-                  <div>
+                  <div className={styles['field-value']}>
                     <label>Value:</label>
                     <input
                       type="text"
@@ -90,10 +65,10 @@ const DropArea = ({ rows, onDragOver, onDropColumn, onFieldDrop, onFieldUpdate }
                     />
                   </div>
                   {field.type === 'dropdown' || field.type === 'radio' ? (
-                    <div>
+                    <div className={styles['field-options']}>
                       <label>Options:</label>
                       {field.options.map((option, optionIndex) => (
-                        <div key={optionIndex}>
+                        <div key={optionIndex} className={styles['option']}>
                           <input
                             type="text"
                             value={option}
@@ -111,6 +86,7 @@ const DropArea = ({ rows, onDragOver, onDropColumn, onFieldDrop, onFieldUpdate }
                             }
                           />
                           <button
+                            className={styles['remove-button']}
                             onClick={() =>
                               handleRemoveOption(rowIndex, columnIndex, fieldIndex, optionIndex)
                             }
@@ -119,7 +95,10 @@ const DropArea = ({ rows, onDragOver, onDropColumn, onFieldDrop, onFieldUpdate }
                           </button>
                         </div>
                       ))}
-                      <button onClick={() => handleAddOption(rowIndex, columnIndex, fieldIndex)}>
+                      <button
+                        className={styles['add-option-button']}
+                        onClick={() => handleAddOption(rowIndex, columnIndex, fieldIndex)}
+                      >
                         Add Option
                       </button>
                     </div>

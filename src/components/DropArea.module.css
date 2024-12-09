@@ -1,0 +1,71 @@
+.drop-area {
+    flex: 1;
+    min-height: 400px;
+    border: 2px dashed #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #eaeaea;
+    border-radius: 5px;
+  }
+  
+  .column {
+    flex: 1;
+    min-height: 100px;
+    margin: 0 10px;
+    border: 1px dashed #000;
+    padding: 10px;
+    background-color: #fff;
+  }
+  
+  .field {
+    margin: 10px 0;
+    padding: 10px;
+    background-color: lightblue;
+    border-radius: 5px;
+  }
+  
+  .field-label,
+  .field-value,
+  .field-options {
+    margin-bottom: 10px;
+  }
+  
+  .field-options input {
+    width: calc(100% - 20px);
+    padding: 5px;
+    margin-right: 10px;
+  }
+  
+  .option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+  
+  .option input {
+    flex: 1;
+  }
+  
+  .remove-button,
+  .add-option-button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .add-option-button {
+    background-color: #28a745;
+  }
+  

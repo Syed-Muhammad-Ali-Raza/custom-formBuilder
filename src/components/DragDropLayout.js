@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import SideBar from './SideBar';
 import DropArea from './DropArea';
-import './Layout.css';
+import './Layout.css'; // Import the CSS file
 
 function DragDropLayout() {
   const [draggedItem, setDraggedItem] = useState(null);
@@ -69,7 +69,7 @@ function DragDropLayout() {
   };
 
   return (
-    <div className="main-container" style={{ display: 'flex', flexDirection: 'column', gap: '20px', padding: '20px' }}>
+    <div className="main-container">
       <div style={{ display: 'flex', gap: '20px' }}>
         <SideBar onDragStart={handleDragStart} />
         <DropArea
@@ -80,17 +80,17 @@ function DragDropLayout() {
           onFieldUpdate={handleFieldUpdate}
         />
       </div>
-      <div style={{ marginTop: '20px', display: 'flex', gap: '10px' }}>
-        <button onClick={togglePreview} style={{ padding: '10px 20px', backgroundColor: '#007bff', color: '#fff', border: 'none', borderRadius: '5px' }}>
+      <div className="button-group">
+        <button onClick={togglePreview} className="button preview-button">
           {showPreview ? 'Close Preview' : 'Preview'}
         </button>
-        <button onClick={saveLayout} style={{ padding: '10px 20px', backgroundColor: '#28a745', color: '#fff', border: 'none', borderRadius: '5px' }}>
+        <button onClick={saveLayout} className="button save-button">
           Save
         </button>
       </div>
       {showPreview && (
-        <div style={{ marginTop: '20px', padding: '20px', backgroundColor: '#f8f9fa', border: '1px solid #ddd', borderRadius: '5px' }}>
-          <h3>Preview</h3>
+        <div className="preview-container">
+          <h3 className="preview-header">Preview</h3>
           {rows.length === 0 ? (
             <p>No layout to preview</p>
           ) : (
