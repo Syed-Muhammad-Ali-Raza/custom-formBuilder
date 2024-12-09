@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "type": "radio",
+    "label": "Radio",
+    "options": ["option 1", "option 2", "option 3"],
+    "initialValue": "",
+    "value": "",
+    "placeholder": "Choose an option",
+    "position": 0
+  },
+  {
+    "id": 2,
+    "type": "textarea",
+    "label": "Textarea",
+    "initialValue": "",
+    "value": "",
+    "placeholder": "Enter text here...",
+    "position": 0
+  },
+  {
+    "id": 3,
+    "type": "text",
+    "subtype": "text",
+    "label": "Text",
+    "initialValue": "",
+    "value": "",
+    "placeholder": "Enter text...",
+    "position": 0
+  },
+  {
+    "id": 4,
+    "type": "dropdown",
+    "label": "Dropdown",
+    "options": ["Opt 1", "Opt 2", "Opt 3"],
+    "initialValue": "",
+    "value": "",
+    "placeholder": "Select an option",
+    "position": 0
+  },
+  {
+    "id": 5,
+    "type": "email",
+    "label": "Email",
+    "initialValue": "",
+    "value": "",
+    "placeholder": "Enter your email",
+    "position": 0
+  },
+  {
+    "id": 6,
+    "type": "column1",
+    "label": "1 Column",
+    "columns": 1,
+    "fields": [],
+    "position": 0
+  },
+  {
+    "id": 7,
+    "type": "column2",
+    "label": "2 Column",
+    "columns": 2,
+    "fields": [[], []],
+    "position": 0
+  },
+  {
+    "id": 8,
+    "type": "column3",
+    "label": "3 Column",
+    "columns": 3,
+    "fields": [[], [], []],
+    "position": 0
+  },
+  {
+    "id": 9,
+    "type": "button",
+    "label": "Button",
+    "initialValue": "Submit",
+    "value": "",
+    "placeholder": "",
+    "position": 0
+  },
+  {
+    "id": 10,
+    "type": "label",
+    "label": "Label",
+    "initialValue": "Custom Label",
+    "value": "",
+    "placeholder": "",
+    "position": 0
+  }
+]
