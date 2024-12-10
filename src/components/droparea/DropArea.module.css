@@ -5,6 +5,8 @@
     padding: 20px;
     border-radius: 5px;
     background-color: #f9f9f9;
+    height: 500px;
+    overflow-y: auto;
   }
   
   .row {
@@ -18,7 +20,7 @@
   
   .column {
     flex: 1;
-    min-height: 100px;
+    min-height: 40px;
     margin: 0 10px;
     border: 1px dashed #000;
     padding: 10px;
@@ -69,3 +71,6 @@
     background-color: #28a745;
   }
   
+  input{
+    padding: 10px 20px;
+  }

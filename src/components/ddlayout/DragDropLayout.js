@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import SideBar from './SideBar';
-import DropArea from './DropArea';
-import './Layout.css'; // Import the CSS file
+import SideBar from '../SideBar';
+import DropArea from '../droparea/DropArea';
+import './Layout.css';
 
 function DragDropLayout() {
   const [draggedItem, setDraggedItem] = useState(null);
@@ -81,6 +81,7 @@ function DragDropLayout() {
           onFieldUpdate={handleFieldUpdate}
         />
       </div>
+
       <div className="button-group">
         <button onClick={togglePreview} className="button preview-button">
           {showPreview ? 'Close Preview' : 'Preview'}
@@ -89,6 +90,7 @@ function DragDropLayout() {
           Save
         </button>
       </div>
+
       {showPreview && (
         <div className="preview-container">
           <h3 className="preview-header">Preview</h3>

@@ -1,11 +1,12 @@
-import DragDrop from "./components/DragDropLayout";
-import SideBar from "./components/SideBar";
+import DragDropLayout from "./components/ddlayout/DragDropLayout";
+
+
 
 
 function App() {
   return (
 <>
-<DragDrop/>
+<DragDropLayout/>
 </>
   );
 }

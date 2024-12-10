@@ -1,20 +1,17 @@
 import React, { useState } from 'react';
 import styles from './DropArea.module.css';
 import { FaTrashAlt, FaEdit, FaCheck, FaTimes } from 'react-icons/fa';
-import './DropArea.module.css'
+
 const DropArea = ({ rows, onDragOver, onDropColumn, onFieldDrop, onFieldUpdate }) => {
   const [editingField, setEditingField] = useState(null);
   const [editValue, setEditValue] = useState('');
 
   const handleInputChange = (e, rowIndex, columnIndex, fieldIndex, key, optionIndex = null) => {
     const value = e.target.value;
-
     if (key === 'options') {
       onFieldUpdate(rowIndex, columnIndex, fieldIndex, key, (prevOptions) => {
         const updatedOptions = [...prevOptions];
-        if (optionIndex !== null) {
-          updatedOptions[optionIndex] = value;
-        }
+        if (optionIndex !== null) updatedOptions[optionIndex] = value;
         return updatedOptions;
       });
     } else {
@@ -28,7 +25,6 @@ const DropArea = ({ rows, onDragOver, onDropColumn, onFieldDrop, onFieldUpdate }
         ? { ...column, fields: column.fields.filter((_, idx) => idx !== fieldIndex) }
         : column
     );
-
     onFieldUpdate(rowIndex, 'columns', updatedColumns);
   };
 
@@ -46,20 +42,13 @@ const DropArea = ({ rows, onDragOver, onDropColumn, onFieldDrop, onFieldUpdate }
   };
 
   const startEditing = (rowIndex, columnIndex, fieldIndex, key, currentValue, optionIndex = null) => {
-    setEditingField({
-      rowIndex,
-      columnIndex,
-      fieldIndex,
-      key,
-      optionIndex,
-    });
+    setEditingField({ rowIndex, columnIndex, fieldIndex, key, optionIndex });
     setEditValue(currentValue);
   };
 
   const saveEdit = () => {
     if (editingField) {
       const { rowIndex, columnIndex, fieldIndex, key, optionIndex } = editingField;
-
       if (key === 'options') {
         handleInputChange({ target: { value: editValue } }, rowIndex, columnIndex, fieldIndex, key, optionIndex);
       } else {
@@ -119,14 +108,14 @@ const DropArea = ({ rows, onDragOver, onDropColumn, onFieldDrop, onFieldUpdate }
               {column.fields.map((field, fieldIndex) => (
                 <div key={fieldIndex} className={styles['field']}>
                   {renderEditableContent(field.label, rowIndex, columnIndex, fieldIndex, 'label')}
-
+                
                   {field.type === 'text' && (
                     <input
                       type="text"
                       value={field.value || ''}
                       onChange={(e) => handleInputChange(e, rowIndex, columnIndex, fieldIndex, 'value')}
                       placeholder={field.label}
-                      style={{ marginTop: '5px', width: '100%' }}
+                      style={{ marginTop: '5px' }}
                     />
                   )}
 
@@ -136,7 +125,7 @@ const DropArea = ({ rows, onDragOver, onDropColumn, onFieldDrop, onFieldUpdate }
                       value={field.value || ''}
                       onChange={(e) => handleInputChange(e, rowIndex, columnIndex, fieldIndex, 'value')}
                       placeholder={field.label}
-                      style={{ marginTop: '5px', width: '100%' }}
+                      style={{ marginTop: '5px' }}
                     />
                   )}
 
@@ -145,7 +134,7 @@ const DropArea = ({ rows, onDragOver, onDropColumn, onFieldDrop, onFieldUpdate }
                       value={field.value || ''}
                       onChange={(e) => handleInputChange(e, rowIndex, columnIndex, fieldIndex, 'value')}
                       placeholder={field.label}
-                      style={{ marginTop: '5px', width: '100%', height: '80px' }}
+                      style={{ marginTop: '5px', height: '80px' }}
                     />
                   )}
 
