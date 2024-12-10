@@ -74,3 +74,13 @@
   input{
     padding: 10px 20px;
   }
+  .dropdown-radio-btn{
+ 
+    margin-top: 5px;
+    padding: 5px;
+    background-color: #007BFF I !important;
+    color: #fff Im !important;
+    border: 'none';
+    cursor: 'pointer';
+
+  }

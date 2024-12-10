@@ -150,16 +150,9 @@ const DropArea = ({ rows, onDragOver, onDropColumn, onFieldDrop, onFieldUpdate }
                             />
                           </div>
                         ))}
-                        <button
+                        <button  className='dropdown-radio-btn'
                           onClick={() => handleAddOption(rowIndex, columnIndex, fieldIndex)}
-                          style={{
-                            marginTop: '5px',
-                            padding: '5px',
-                            background: '#007BFF',
-                            color: '#fff',
-                            border: 'none',
-                            cursor: 'pointer',
-                          }}
+                       
                         >
                           Add Option
                         </button>
@@ -178,19 +171,12 @@ const DropArea = ({ rows, onDragOver, onDropColumn, onFieldDrop, onFieldUpdate }
                           />
                         </div>
                       ))}
-                      <button
-                        onClick={() => handleAddOption(rowIndex, columnIndex, fieldIndex)}
-                        style={{
-                          marginTop: '5px',
-                          padding: '5px',
-                          background: '#007BFF',
-                          color: '#fff',
-                          border: 'none',
-                          cursor: 'pointer',
-                        }}
-                      >
-                        Add Option
-                      </button>
+                     <button className='dropdown-radio-btn'
+                          onClick={() => handleAddOption(rowIndex, columnIndex, fieldIndex)}
+                         
+                        >
+                          Add Option
+                        </button>
                     </div>
                   )}
 

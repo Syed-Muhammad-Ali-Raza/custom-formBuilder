@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import SideBar from '../SideBar';
 import DropArea from '../droparea/DropArea';
+import Modal from '../modal/Modal';
 import './Layout.css';
 
 function DragDropLayout() {
   const [draggedItem, setDraggedItem] = useState(null);
   const [rows, setRows] = useState([]);
-  const [showPreview, setShowPreview] = useState(false);
+  const [showPreviewModal, setShowPreviewModal] = useState(false);
 
   const handleDragStart = (e, item) => {
     setDraggedItem(item);
@@ -66,7 +67,7 @@ function DragDropLayout() {
   };
 
   const togglePreview = () => {
-    setShowPreview((prev) => !prev);
+    setShowPreviewModal((prev) => !prev);
   };
 
   return (
@@ -84,43 +85,45 @@ function DragDropLayout() {
 
       <div className="button-group">
         <button onClick={togglePreview} className="button preview-button">
-          {showPreview ? 'Close Preview' : 'Preview'}
+          {showPreviewModal ? 'Close Preview' : 'Preview'}
         </button>
         <button onClick={saveLayout} className="button save-button">
           Save
         </button>
       </div>
 
-      {showPreview && (
-        <div className="preview-container">
-          <h3 className="preview-header">Preview</h3>
-          {rows.length === 0 ? (
-            <p>No layout to preview</p>
-          ) : (
-            rows.map((row, rowIndex) => (
-              <div key={rowIndex} style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
-                {row.columns.map((column, columnIndex) => (
-                  <div key={columnIndex} style={{ flex: 1, margin: '0 10px', padding: '10px', backgroundColor: '#fff', border: '1px solid #ccc' }}>
-                    {column.fields.map((field, fieldIndex) => (
-                      <div key={fieldIndex} style={{ marginBottom: '10px' }}>
-                        <strong>{field.label || 'Untitled Field'}</strong>
-                        {field.type === 'dropdown' || field.type === 'radio' ? (
-                          <ul>
-                            {field.options.map((option, optionIndex) => (
-                              <li key={optionIndex}>{option}</li>
-                            ))}
-                          </ul>
-                        ) : (
-                          <p>{field.value}</p>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                ))}
-              </div>
-            ))
-          )}
-        </div>
+      {showPreviewModal && (
+        <Modal onClose={togglePreview}>
+          <div className="preview-container">
+            <h3 className="preview-header">Preview</h3>
+            {rows.length === 0 ? (
+              <p>No layout to preview</p>
+            ) : (
+              rows.map((row, rowIndex) => (
+                <div key={rowIndex} style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
+                  {row.columns.map((column, columnIndex) => (
+                    <div key={columnIndex} style={{ flex: 1, margin: '0 10px', padding: '10px', backgroundColor: '#fff', border: '1px solid #ccc' }}>
+                      {column.fields.map((field, fieldIndex) => (
+                        <div key={fieldIndex} style={{ marginBottom: '10px' }}>
+                          <strong>{field.label || 'Untitled Field'}</strong>
+                          {field.type === 'dropdown' || field.type === 'radio' ? (
+                            <ul>
+                              {field.options.map((option, optionIndex) => (
+                                <li key={optionIndex}>{option}</li>
+                              ))}
+                            </ul>
+                          ) : (
+                            <p>{field.value}</p>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  ))}
+                </div>
+              ))
+            )}
+          </div>
+        </Modal>
       )}
     </div>
   );
